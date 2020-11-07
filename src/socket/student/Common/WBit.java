@@ -57,17 +57,17 @@ public class WBit {
         this.pos -= length;
         int byteIndex = this.pos / ByteSize;
 
-        byte[] stringBytes = new byte[length / ByteSize];
+        byte[] operateBytes = new byte[length / ByteSize];
         int i = Math.max(0, byteIndex - 1), work = 0;
         for (; i < length / ByteSize; i++) {
             if (bytes[i] != 0) {
-                stringBytes[work++] = bytes[i];
+                operateBytes[work++] = bytes[i];
                 bytes[i] = 0;
             }
         }
         System.arraycopy(bytes, i, bytes, 0, this.pos / ByteSize);
 
-        return WBit.cutArrayByLength(stringBytes, work);
+        return WBit.cutArrayByLength(operateBytes, work);
     }
 
     public byte getByte() throws Exception {
