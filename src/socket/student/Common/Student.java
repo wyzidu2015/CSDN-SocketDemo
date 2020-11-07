@@ -33,7 +33,7 @@ public class Student {
 
         wbit.put(name.getBytes(DefaultCharset), Constant.NameLength);
 
-        byte sexByte = (byte)(sex == Sex.Male ? 0 : 1);
+        byte sexByte = (byte)(Sex.Male == sex ? 0 : 1);
         byte ageByte = age.byteValue();
         byte sexAndAgeByte = (byte)(sexByte << 7 | ageByte);
 

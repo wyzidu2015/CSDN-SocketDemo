@@ -27,13 +27,13 @@ public class UpdateInstruction implements Instruction {
         WBit wBit = new WBit(data, Constant.IdLength + 2 * 8);
         byte[] idBytes = wBit.get(Constant.IdLength);
 
-        if (idBytes.length == 1) {
+        if (1 == idBytes.length) {
             id = (int) idBytes[0];
         }
 
         int flag = wBit.getByte();
 
-        if (flag == 1) {
+        if (1 == flag) {
             age = (int) wBit.getByte();
         } else {
             sex = wBit.getByte() == 0 ? Sex.Male : Sex.Female;

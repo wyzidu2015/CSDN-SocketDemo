@@ -19,7 +19,7 @@ public class InstructionFactory {
     }
 
     public byte[] getBytes() throws Exception {
-        if (bytes == null) {
+        if (null == bytes) {
             byte[] instrBytes = instruction.encode();
 
             byte header = instruction.getInstructionType().byteValue();
@@ -35,8 +35,7 @@ public class InstructionFactory {
     }
 
     public Instruction getInstruction() throws Exception {
-        if (instruction == null) {
-
+        if (null == instruction) {
             byte header = bytes[0];
             byte[] instrBytes = new byte[bytes.length - 1];
             System.arraycopy(bytes, 1, instrBytes, 0, bytes.length - 1);

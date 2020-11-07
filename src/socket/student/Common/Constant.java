@@ -21,4 +21,6 @@ public class Constant {
     public static final String ServerUrl = "localhost";
     public static final int AllPageCount = 16;
     public static final int AllPageSize = 8;
+    public static final int MaxTranslateSize = 1024;
+    public static final Integer BufferSize = 16;
 }

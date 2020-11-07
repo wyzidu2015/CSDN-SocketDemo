@@ -19,15 +19,49 @@ public class TCPClient {
 
 
     public byte[] sendDataToServer(byte[] data) throws IOException {
-        output.write(data);
-        output.flush();
-        socket.shutdownOutput();
+        byte[] result;
 
-        byte[] receiveData = new byte[128];
-        int receiveCount = input.read(receiveData);
-        byte[] result = WBit.cutArrayByLength(receiveData, receiveCount);
+        try {
+            output.write(data);
+            output.flush();
+            socket.shutdownOutput();
 
-        socket.shutdownInput();
+            byte[] receiveData = new byte[Constant.MaxTranslateSize];
+            int receiveCount = input.read(receiveData);
+            result = WBit.cutArrayByLength(receiveData, receiveCount);
+
+            socket.shutdownInput();
+            input.close();
+            output.close();
+            socket.close();
+
+        } catch (IOException e) {
+            if (null != input) {
+                try {
+                    input.close();
+                } catch (IOException e1) {
+                    System.out.println(e1);
+                }
+            }
+
+            if (null != output) {
+                try {
+                    output.close();
+                } catch (IOException e1) {
+                    System.out.println(e1);
+                }
+            }
+
+            if (null != socket) {
+                try {
+                    socket.close();
+                } catch (IOException e1) {
+                    System.out.println(e1);
+                }
+            }
+
+            throw e;
+        }
 
         return result;
     }

@@ -17,10 +17,10 @@ public class SelectInstruction implements Instruction {
     public SelectInstruction(byte[] data) throws Exception {
         WBit wBit = new WBit(data, Constant.AllPageCount + Constant.AllPageSize);
         byte[] pageNoBytes = wBit.get(Constant.AllPageCount);
-        this.pageNo = pageNoBytes.length == 0 ? 0 : (int) pageNoBytes[0];
+        this.pageNo = 0 == pageNoBytes.length ? 0 : (int) pageNoBytes[0];
 
         byte[] pageSizeBytes = wBit.get(Constant.AllPageSize);
-        this.pageSize = pageSizeBytes.length == 0 ? 0 : (int) pageSizeBytes[0];
+        this.pageSize = 0 == pageSizeBytes.length ? 0 : (int) pageSizeBytes[0];
     }
 
     @Override

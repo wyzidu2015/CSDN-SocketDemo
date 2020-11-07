@@ -26,7 +26,7 @@ public class WBit {
     }
 
     public void put(byte[] array, int length) throws Exception {
-        if (length % ByteSize != 0) {
+        if (0 != length % ByteSize) {
             throw new Exception("Not support non-integer length.");
         }
 
@@ -50,7 +50,7 @@ public class WBit {
     }
 
     public byte[] get(int length) throws Exception {
-        if (length % ByteSize != 0) {
+        if (0 != length % ByteSize) {
             throw new Exception("Not support non-integer length.");
         }
 
@@ -72,7 +72,7 @@ public class WBit {
 
     public byte getByte() throws Exception {
         byte[] result = get(ByteSize);
-        if (result.length == 0) {
+        if (0 == result.length) {
             return (byte) 0;
         }
 

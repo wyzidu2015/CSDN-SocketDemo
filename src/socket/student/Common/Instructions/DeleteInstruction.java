@@ -17,7 +17,7 @@ public class DeleteInstruction implements Instruction {
         WBit wBit = new WBit(data, Constant.IdLength);
 
         byte[] bytes = wBit.get(Constant.IdLength);
-        if (bytes.length == 1) {
+        if (1 == bytes.length) {
             this.id = (int) bytes[0];
         } else {
             this.id = ByteBuffer.wrap(bytes).getInt();
