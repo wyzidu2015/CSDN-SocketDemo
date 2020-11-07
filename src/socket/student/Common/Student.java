@@ -27,7 +27,6 @@ public class Student {
         WBit wbit = new WBit(containsId ? Constant.TotalLength + Constant.IdLength : Constant.TotalLength);
 
         if (containsId) {
-            id = 12;
             byte[] idBytes = { id.byteValue()};
             wbit.put(idBytes, Constant.IdLength);
         }
@@ -38,9 +37,7 @@ public class Student {
         byte ageByte = age.byteValue();
         byte sexAndAgeByte = (byte)(sexByte << 7 | ageByte);
 
-        byte[] sexAndAgeRes = { sexAndAgeByte };
-        wbit.put(sexAndAgeRes, 8);
-
+        wbit.putByte(sexAndAgeByte);
         return wbit.getBytes();
     }
 
