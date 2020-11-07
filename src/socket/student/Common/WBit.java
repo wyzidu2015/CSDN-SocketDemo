@@ -65,13 +65,9 @@ public class WBit {
                 bytes[i] = 0;
             }
         }
-
         System.arraycopy(bytes, i, bytes, 0, this.pos / ByteSize);
 
-        byte[] result = new byte[work];
-        System.arraycopy(stringBytes, 0, result, 0, work);
-
-        return result;
+        return WBit.cutArrayByLength(stringBytes, work);
     }
 
     public byte getByte() throws Exception {
